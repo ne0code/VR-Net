@@ -349,7 +349,7 @@ if __name__ == "__main__":
     
     '''
     #Number of simulations(can be set by yourself)
-    Epochs = 1
+    Epochs = 100
     voronoi_test_list = []
     test_list = []
     test2_list = []
