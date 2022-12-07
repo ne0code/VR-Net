@@ -347,7 +347,7 @@ if __name__ == "__main__":
     plt.show()
     
     
-    '''
+    
     #Number of simulations(can be set by yourself)
     Epochs = 100
     voronoi_test_list = []
@@ -538,7 +538,7 @@ if __name__ == "__main__":
     #plt.savefig('Fig12.pdf', bbox_inches='tight')
     plt.savefig('VR-Net-acc.pdf', bbox_inches='tight')
     plt.show()
-    '''
+    
     
     end = time.perf_counter()
     print('running time: %s Seconds' %(end - start))
