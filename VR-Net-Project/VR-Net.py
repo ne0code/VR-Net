@@ -5,7 +5,7 @@ Created on Sat Sep 17 18:52:27 2022
 @author: dell
 """
 
-#Complete procedure of paper
+
 import time 
 start = time.perf_counter() 
 import tensorflow as tf
@@ -49,7 +49,7 @@ def plot_circle(centers,r,axes):
 
 
        
-#Calculate the Euclidean distance from a point to each point in a point set
+#Calculate Euclidean distances
 def ed(m, n):
     # 1-dimensional array
     dist = np.sqrt(np.sum(np.asarray(m - n) ** 2,axis=1))
@@ -128,7 +128,7 @@ def Labeled_points(centers, r, x_axis, MSVR_num, Use_points_num, Random_points_n
         Test_np_labels_list.append(test_np_labels)
         
         
-        #divide known point set into multiple sub point sets according to the VR regions
+        #divide known point set into subsets according to the VR regions
         list_known_L = list([tuple(t) for t in known_np_labels])
         dict_known_L = dict((t, list_known_L.count(t)) for t in list_known_L)
         known_np_keys = np.array(list(dict_known_L.keys()))
@@ -162,7 +162,7 @@ def generate_dataset(Known_labeled_pts_list,Known_pts_list,Known_np_labels_list,
         np_subsets_mean = np.array(subpointsets_mean_list)
         
         
-        #generate training point dataset
+        #generate training dataset
         known_dists_list = []
         for i in range(len(Known_pts_list[T])):
             m = Known_pts_list[T][i] 
@@ -176,7 +176,7 @@ def generate_dataset(Known_labeled_pts_list,Known_pts_list,Known_np_labels_list,
         np_train_data_list.append(np_known_data)
         
         
-        #generate test point dataset
+        #generate testing dataset
         test_dists_list = []
         for i in range(len(Test_pts_list[T])):
             m = Test_pts_list[T][i] 
@@ -203,7 +203,7 @@ def pre_process(load_data,units_num):
             if len(load_data[T][0]) >= units_num+1:
                 break
                     
-        #normalizing
+        #normalizition
         np.random.shuffle(load_data[T])
         data = load_data[T][:,1:] / 300 
         data_list.append(data)
@@ -348,13 +348,13 @@ if __name__ == "__main__":
     
     
     
-    #Number of simulations(can be set by yourself)
-    Epochs = 100
+    #Number of snapshots
+    Snapshots = 100
     voronoi_test_list = []
     test_list = []
     test2_list = []
     test3_list = []
-    for T in range(Epochs):
+    for T in range(Snapshots):
         x_axis = list(range(1000,20000,1000))
         
         #Generate Location-VR dataset
@@ -362,7 +362,7 @@ if __name__ == "__main__":
                                                                                                                              30,20000, 1)
         
         
-        #generate training point dataset and test point dataset
+        #generate training dataset and test dataset
         train_data_list, test_data_list = generate_dataset(Known_labeled_pts_list,Known_pts_list,Known_np_labels_list,
                                                            Test_pts_list,Test_np_labels_list)
         
